@@ -26,14 +26,25 @@
             color: #666666; /* color de texto de los parrafos */
         }
 
+        .btn {
+            background-color: #ffff00;
+            color: #000000;
+        }
+
+        .card h3 {
+            color: #000000;
+        }
+
+
     </style>
 </head>
 <body>
 
     <!-- Encabezado -->
     <nav>
-        <div class="navegacion ">
+        <div class="nav-wrapper">
             <a href="#"class="brand-logo"><img src="css/logo donde la tia.jpg" width="5.5%" alt="Logo del local"></a>    
+            <a href="#" data-target="mobile-menu" class="sindenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="ocultar derecha-en medio-y-abajo">
                 <li><a href="bienvenida">Inicio</a></li>
                 <li><a href="menu">Menú</a></li>
@@ -41,7 +52,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <!-- Seccion de Bienvenida -->    
     <section id="bienvenida" class="section" style="background-color: #ffff00; color: black;">
         <div class="container">
