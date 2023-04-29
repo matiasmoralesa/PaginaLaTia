@@ -1,239 +1,233 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text.css" href="css/reset.css">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <title>Donde la Tia</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        nav {
-            background-color: #000000; /* color de fondo de la barra de navegacion*/
-        }
-        nav a {
-            color: #ffff00; /* color del texto de los enlaces en la barra de navegacion*/
-        }
-
-        section h2 {
-            color: #000000; /* color del texto de los titulos de seccion */
-        }
-
-        section p {
-            color: #666666; /* color de texto de los parrafos */
-        }
-
-        .btn {
-            background-color: #ffff00;
-            color: #000000;
-        }
-
-        .card h3 {
-            color: #000000;
-        }
-
-
-    </style>
+  <title>Landing Page - Local de Comida Rápida</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Importar archivos CSS de Materialize -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <style>
+    /* Estilos personalizados */
+    nav {
+      background-color: #000000; /* Color de fondo de la barra de navegación */
+    }
+    nav a {
+      color: #ffff00; /* Color del texto de los enlaces en la barra de navegación */
+    }
+    section h2 {
+      color: #000000; /* Color del texto de los títulos de sección */
+    }
+    section p {
+      color: #666666; /* Color del texto de los párrafos */
+    }
+    .btn {
+      background-color: #ffff00; /* Color de fondo de los botones */
+      color: #000000; /* Color del texto de los botones */
+    }
+    .card h3 {
+      color: #000000; /* Color del texto de los títulos de las tarjetas */
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Encabezado -->
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="css/logo donde la tia.jpg" width="5.5%" alt="Logo del local"></a>    
-            
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#bienvenida">Inicio</a></li>
-                <li><a href="#menu">Menú</a></li>
-                <li><a href="#ubicacion">Ubicacion</a></li>
-                <li><a href="#formulario">Fomulario</a></li>
-                <li><a href="#redes-sociales">Redes sociales</a></li>
-            </ul>
-        </div>
-    </nav>
+  <!-- Encabezado -->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><img src="css/logo donde la tia.jpg" width="5.5%" alt="Logo del local"></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#bienvenida">Inicio</a></li>
+        <li><a href="#menu">Menú</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+        <li><a href="#formulario">Formulario</a></li>
+        <li><a href="#redes-sociales">Redes sociales</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Seccion de Bienvenida -->    
-    <section id="bienvenida" class="section" style="background-color: #ffff00a9; color: black;">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m6">
-                    <h2>Bienvenidos al local de comida rápida Donde La Tía</h2>
-                    <p>Ofrecemos una amplia variedad de productos como completos, papas fritas, churrascos, hamburgesas y pollo asado</p>
-                    <a href="#formulario" class="btn btn-large">Haz tu pedido</a>
-                </div>  
-                <div class="col s12 m6">
-                    <img src="css/local fisico.jpg" width="140%" alt="Imagen del local">
-                </div>
-            </div>
+  <!-- Sección de bienvenida -->
+  <section id="bienvenida" class="section" style="background-color: #ffff00; color: #000000;">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <h2>Bienvenidos al local de comida rápida donde la tia</h2>
+          <p>Ofrecemos una amplia variedad de productos como completos, papas fritas, churrascos, pollo asado y hamburguesas. Todos nuestros productos son frescos y de alta calidad.</p>
+          <a href="#formulario" class="btn btn-large">Haz tu pedido</a>
         </div>
-    </section>
-
-    <!-- Menu -->
-    <section id="menu" class="section grey lighten-4">
-        <div class="container">
-            <h2 class="center">Nuestro Menu</h2>
-            <div class="row">
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="css/completo.png" width="30%" alt="imagen de completos">
-                            <span class="card-title">completo</span>    
-                        </div>
-                        <div class="card-content">
-                            <p>Delicioso completo con tomate, palta y mayo.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#formulario">Pedir</a>
-                        </div>
-                    </div>
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="css/papas fritas.jpg" width="30%" alt="imagen de papas fritas">
-                            <span class="card-title">papas fritas</span>    
-                        </div>
-                        <div class="card-content">
-                            <p>Deliciosas papas fritas con salsa ketchup.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#formulario">Pedir</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="css/churrasco.jpg" width="30%" alt="Imagen de Churrasco"> 
-                            <span class="card-title">Churrasco</span>   
-                        </div>
-                        <div class="card-content">
-                            <p>Deliciosos churrascos con tomate, palta y mayo.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#formulario">Pedir</a>
-                        </div>
-                    </div>
-                </div>     
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="css/hamburgesa.jpg" alt="Imagen de hamburgesas "> 
-                            <span class="card-title"></span>   
-                        </div>
-                        <div class="card-content">
-                            <p>Deliciosa hamburguesa con lechuga, tomate, queso y tocino.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#formulario">Pedir</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="card">
-                        <div class="card-image">
-                            <img src="css/pollo asado.jpg" alt="Imagen de pollo asado "> 
-                            <span class="card-title"></span>   
-                        </div>
-                        <div class="card-content">
-                            <p>Delicioso pollo asado con  papas fritas.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="#formulario">Pedir</a>
-                        </div>
-                    </div>
-                </div>  
-            </div>
+        <div class="col s12 m6">
+          <img src="css/local fisico.jpg" width="140%" alt="Imagen del local">
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- formulario -->
-    <section id="formulario" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2>Realiza tu pedido</h2>
-                    <p>Por favor, complete el siguiente formulario y nos pondremos en contacto con tigo a la brevedad posible</p>
-                </div>
-            </div>
+  <!-- Menú -->
+  <section id="menu" class="section grey lighten-4">
+    <div class="container">
+        <h2 class="center">Nuestro Menú</h2>
         <div class="row">
-            <form class="col s12" method="post" action="procesar_pedido.php">
-                <div class="row">
-                    <div class="input-field col s12">   
-                        <input id="nombre" type="text" name="nombre" required>
-                        <label for="nombre">Nombre</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="correo" type="email" name="correo" required>
-                        <label for="correo">Correo electronico</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <input id="telefono" type="tel" name="telefono" required>
-                        <label for="telefono">Numero de telefono</label>
-                    </div>
-                    <div class="input-field col s12">
-                        <textarea id="mensaje" class="materialize-textarea" name="mensaje"></textarea>
-                        <label for="mensaje">Mensaje</label>
-                    </div>
-                    <div class="col s12">
-                        <button class="btn waves-effect waves-light" type="submit">Enviar</button>
-                    </div>
-                </div>
-            </form>    
-        </div>
-    </section>
-
-        <!-- ubicacion -->
-    <section id="ubicacion" class="seccion grey lighten-4">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2>Ubicacion</h2>
-                    <p>Encuentranos en el siguiente mapa</p>
-                </div>
-            </div>    
-            <div class="row">
-                <div class="col s12">   
-                    <div class="mapa">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3272.857489903675!2d-70.3305580847353!3d-27.374460985294845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x968a51b75dcebe5f%3A0xdacaf7bfe18d462a!2sAtacama%20411%2C%20Copiap%C3%B3%2C%20Atacama!5e0!3m2!1sen!2scl!4v1651252351922!5m2!1sen!2scl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                    </div>
-                </div>
+          <div class="col s12 m4">
+            <div class="card">
+              <div class="card-image">
+                <img src="css/completo.png" alt="Imagen de completo">
+                <span class="card-title">Completo</span>
+              </div>
+              <div class="card-content">
+                <p>Delicioso completo con tomate, palta, mayo y mostaza.</p>
+              </div>
+              <div class="card-action">
+                <a href="#formulario">Pedir</a>
+              </div>
             </div>
-        </div>
-    </section>
-
-    <!-- redes sociales -->
-    <section id="redes-sociales" class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2>Redes Sociales</h2>
-                    <p>Encuentranos en nusestras redes sociales</p>
-                <div class="row">
-                    <div class="col s4 center">
-                        <a href="https://www.facebook.com/claudiaveronica.alcavilpena.1/about" target="_blank">
-                            <img src="css/logo de facebook.png" width="50%" alt="Facebook">
-                        </a>
-                    </div>
-                    <div class="col s4 center">
-                        <a href="https://www.instagram.com/chi.ruca" target="_blank">
-                            <img src="css/logo de instragram.png" width="55%" alt="Facebook">
-                        </a>
-                    </div>
-                    <div class="col s4 center">
-                        <a href="https://wa.me/56945451441" target="_blank">
-                            <img src="css/logo de whatsapp.png" width="55%" alt="Facebook">
-                        </a>
-                    </div>
-                </div>
-                </div>     
+          </div>
+          <div class="col s12 m4">
+            <div class="card">
+              <div class="card-image">
+                <img src="css/papas fritas.jpg" alt="Imagen de papas fritas">
+                <span class="card-title">Papas Fritas</span>
+              </div>
+              <div class="card-content">
+                <p>Deliciosas papas fritas con salsa ketchup.</p>
+              </div>
+              <div class="card-action">
+                <a href="#formulario">Pedir</a>
+              </div>
             </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card">
+              <div class="card-image">
+                <img src="css/churrasco.jpg" alt="Imagen de churrasco">
+                <span class="card-title">Churrasco</span>
+              </div>
+              <div class="card-content">
+                <p>Delicioso churrasco con lechuga, tomate, mayo y mostaza.</p>
+              </div>
+              <div class="card-action">
+                <a href="#formulario">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card">
+              <div class="card-image">
+                <img src="css/pollo asado.jpg" alt="Imagen de pollo asado">
+                <span class="card-title">Pollo Asado</span>
+              </div>
+              <div class="card-content">
+                <p>Delicioso pollo asado con ensalada y papas fritas.</p>
+              </div>
+              <div class="card-action">
+                <a href="#formulario">Pedir</a>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m4">
+            <div class="card">
+              <div class="card-image">
+                <img src="css/hamburgesa.jpg" alt="Imagen de hamburguesa">
+                <span class="card-title">Hamburguesa</span>
+              </div>
+              <div class="card-content">
+                <p>Deliciosa hamburguesa con lechuga, tomate, queso y tocino.</p>
+              </div>
+              <div class="card-action">
+                <a href="#formulario">Pedir</a>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!--JavaScript at end of body for optimized loading-->
+    <!-- Ubicación -->
+  <section id="ubicacion" class="section grey lighten-4">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h2>Ubicación</h2>
+          <p>Encuéntranos en el siguiente mapa:</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+          <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3272.857489903675!2d-70.3305580847353!3d-27.374460985294845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x968a51b75dcebe5f%3A0xdacaf7bfe18d462a!2sAtacama%20411%2C%20Copiap%C3%B3%2C%20Atacama!5e0!3m2!1sen!2scl!4v1651252351922!5m2!1sen!2scl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de contacto -->
+  <section id="formulario" class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h2>Realiza tu pedido</h2>
+        <p>Por favor, completa el siguiente formulario y nos pondremos en contacto contigo a la brevedad posible.</p>
+      </div>
+    </div>
+    <div class="row">
+      <form class="col s12" method="POST" action="procesar_pedido.php">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="nombre" type="text" name="nombre" required>
+            <label for="nombre">Nombre</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="correo" type="email" name="correo" required>
+            <label for="correo">Correo electrónico</label>
+          </div>
+          <div class="input-field col s12">
+            <input id="telefono" type="tel" name="telefono" required>
+            <label for="telefono">Número de teléfono</label>
+          </div>
+          <div class="input-field col s12">
+            <textarea id="mensaje" class="materialize-textarea" name="mensaje"></textarea>
+            <label for="mensaje">Mensaje</label>
+          </div>
+          <div class="col s12">
+            <button class="btn waves-effect waves-light" type="submit">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  </section>
+
+  <!-- Redes Sociales -->
+  <section id="redes-sociales" class="section">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h2>Redes Sociales</h2>
+          <p>Encuéntranos en nuestras redes sociales:</p>
+          <div class="row">
+            <div class="col s4 center">
+              <a href="https://www.facebook.com/claudiaveronica.alcavilpena.1/about" target="_blank">
+                <img src="css/logo de facebook.png" width="50%" alt="Facebook">
+              </a>
+            </div>
+            <div class="col s4 center">
+              <a href="https://www.instagram.com/chi.ruca/" target="_blank">
+                <img src="css/logo de instragram.png" width="55%" alt="Instagram">
+              </a>
+            </div>
+            <div class="col s4 center">
+              <a href="https://wa.me/56945451441" target="_blank">
+                <img src="css/logo de whatsapp.png" width="55%" alt="WhatsApp">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
+
 </body>
 </html>
