@@ -6,69 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Importar archivos CSS de Materialize -->
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap">
-  <style>
-    /* Estilos personalizados */
-    nav {
-      background-color: #000000; /* Color de fondo de la barra de navegación */
-    }
-    nav a {
-      color: #ffff00; /* Color del texto de los enlaces en la barra de navegación */
-    }
-    section h2 {
-      color: #000000; /* Color del texto de los títulos de sección */
-    }
-    section p {
-      color: #666666; /* Color del texto de los párrafos */
-    }
-    .btn {
-      background-color: #ffff00; /* Color de fondo de los botones */
-      color: #000000; /* Color del texto de los botones */
-    }
-    .card h3 {
-      color: #000000; /* Color del texto de los títulos de las tarjetas */
-    }
-
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    font-size: 16px;
-    } 
-
-    h1, h3{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    }
-  
-    h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-    }  
-  
-    p {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  } 
-
-    ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  }
-
-  li {
-  margin-bottom: 10px;
-  }
-
-  </style>
+  <link rel="stylesheet" href='css/style.css'>
 </head>
-<body>
+<body class="blanco">
+  
+  <button id="btnContraste" class="btn waves-effect waves-light" value="0">Contraste</button>
+  <button id="btnFuente" class="btn waves-effect waves-light" value="1">Fuente</button>
 
   <!-- Encabezado -->
   <nav>
-    <div class="nav-wrapper">
+    <div>
       <a href="#" class="brand-logo"><img src="css/logo donde la tia.jpg" width="5.5%" alt="Logo del local"></a>
       <ul class="right hide-on-med-and-down">
         <li><a href="#bienvenida">Inicio</a></li>
@@ -80,8 +29,10 @@
     </div>
   </nav>
 
+ 
+
   <!-- Sección de bienvenida -->
-  <section id="bienvenida" class="section" style="background-color: #ffff00; color: #000000;">
+  <section id="bienvenida" class="section">
     <div class="container">
       <div class="row">
         <div class="col s12 m6" margin :auto>
@@ -95,6 +46,8 @@
       </div>
     </div>
   </section>
+
+  
 
   <!-- Menú -->
   <section id="menu" class="section grey lighten-4">
@@ -196,39 +149,61 @@
 
   <!-- Formulario de contacto -->
   <section id="formulario" class="section">
-  <div class="container">
-    <div class="row">
-      <div class="col s12">
-        <h2>Realiza tu pedido</h2>
-        <p>Por favor, completa el siguiente formulario y nos pondremos en contacto contigo a la brevedad posible.</p>
-      </div>
-    </div>
-    <div class="row">
-      <form class="col s12" method="POST" action="procesar_pedido.php">
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="nombre" type="text" name="nombre" required>
-            <label for="nombre">Nombre</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="correo" type="email" name="correo" required>
-            <label for="correo">Correo electrónico</label>
-          </div>
-          <div class="input-field col s12">
-            <input id="telefono" type="tel" name="telefono" required>
-            <label for="telefono">Número de teléfono</label>
-          </div>
-          <div class="input-field col s12">
-            <textarea id="mensaje" class="materialize-textarea" name="mensaje"></textarea>
-            <label for="mensaje">Mensaje</label>
-          </div>
-          <div class="col s12">
-            <button class="btn waves-effect waves-light" type="submit">Enviar</button>
-          </div>
+    <div class="container">
+      <h3>Formulario de Reserva mesa</h3>
+      <form id="myForm">
+        <div class="input-field">
+          <input type="text" name="nombre" id="nombre"required>
+          <label for="nombre">Nombre</label>
         </div>
+        <div class="input-field">
+          <input type="email" name="correo" id="correo" required>
+          <label for="correo">Correo electrónico</label>
+        </div>
+        <div class="input-field">
+          <input type="tel" name="telefono" id="telefono" required>
+          <label for="telefono">Teléfono</label>
+        </div>
+        <div class="input-field">
+          <input type="text" name="comidaFavorita" id="comida" required>
+          <label for="comidaFavorita">Comida favorita</label>
+        </div>
+        <div class="input-field">
+          <input type="number" name="cantidadPersonas" id="personas" required>
+          <label for="cantidadPersonas">Cantidad de personas</label>
+        </div>
+        <div class="input-field">
+          <input type="date" name="fecha" id="fecha" required>
+          <label for="fecha">Fecha Reserva</label> 
+        </div>
+        <div class="input-field">
+          <input type="time" name="hora" id="hora" required>
+          <label for="hora">Hora reserva</label>
+        </div>
+        <div class="input-field">
+          <textarea name="recomendacion" id="recomendacion" cols="30" rows="10"></textarea>
+          <label for="recomendacion">Recomendacion</label>
+        </div>
+        <div class="input-field">
+          <p>
+            <label> seleccione su horario:</label>  
+              <input type="checkbox" name="horario" id="checkboxDia" value="dia"  required> Dia
+              <input type="checkbox" name="horario" id="checkboxNoche" value="noche" required> Noche
+            <label for="valorSeleccionado"></label>
+            <input type="text" id="valorSeleccionado" readonly> 
+          </p>
+          <br>
+          <br>
+          <br>
+        </div>
+        <button class="btn waves-effect waves-light" type="button" id="btn">Enviar</button><br>
+          
       </form>
     </div>
-  </div>
+    <div id="contenedorTabla">
+
+    </div>  
+    </section>
   </section>
 
   <!-- Redes Sociales -->
@@ -262,6 +237,7 @@
 
       <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="js/myScript.js"></script>
 
 </body>
 </html>
