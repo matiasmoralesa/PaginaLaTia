@@ -20,4 +20,15 @@
 .tamanio-letra-muy-grande {
     font-size: 30px; /* Tamaño de letra muy grande */
   }
-  
+
+/* Estilos para los campos inválidos */
+.campo-invalido {
+  border: 2px solid red;
+}
+
+/* Estilos para los mensajes de error */
+.mensaje-error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}  

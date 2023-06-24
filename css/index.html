@@ -153,54 +153,56 @@
       <h3>Formulario de Reserva mesa</h3>
       <form id="myForm">
         <div class="input-field">
-          <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+          <input type="text" name="nombre" id="nombre"required>
           <label for="nombre">Nombre</label>
         </div>
         <div class="input-field">
-          <input type="email" name="correo" id="correo" placeholder="Correo electrónico">
+          <input type="email" name="correo" id="correo" required>
           <label for="correo">Correo electrónico</label>
         </div>
         <div class="input-field">
-          <input type="tel" name="telefono" id="telefono" placeholder="telefono">
+          <input type="tel" name="telefono" id="telefono" required>
           <label for="telefono">Teléfono</label>
         </div>
         <div class="input-field">
-          <input type="text" name="comidaFavorita" id="comida" placeholder="comida Favorita">
+          <input type="text" name="comidaFavorita" id="comida" required>
           <label for="comidaFavorita">Comida favorita</label>
         </div>
         <div class="input-field">
-          <input type="number" name="cantidadPersonas" id="personas" placeholder="cantidad Personas">
+          <input type="number" name="cantidadPersonas" id="personas" required>
           <label for="cantidadPersonas">Cantidad de personas</label>
         </div>
         <div class="input-field">
-          <input type="date" name="fecha" id="fecha" placeholder="fechaReserva">
+          <input type="date" name="fecha" id="fecha" required>
           <label for="fecha">Fecha Reserva</label> 
         </div>
         <div class="input-field">
-          <input type="time" name="hora" id="hora" placeholder="hora Reserva">
+          <input type="time" name="hora" id="hora" required>
           <label for="hora">Hora reserva</label>
         </div>
         <div class="input-field">
-          <textarea name="recomendacion" id="recomendacion" cols="30" rows="10" placeholder="recomendacion de preferencia?"></textarea>
+          <textarea name="recomendacion" id="recomendacion" cols="30" rows="10"></textarea>
           <label for="recomendacion">Recomendacion</label>
         </div>
-        <div>
-          <label for="condiciones">
-          <input type="checkbox" name="condiciones" id="condiciones" >
-          <span>Terminos y Condiciones</span>
-          </label>
+        <div class="input-field">
+          <p>
+            <label> seleccione su horario:</label>  
+              <input type="radio" name="horario" id="checkboxDia" value="dia"  required> Dia
+              <input type="radio" name="horario" id="checkboxNoche" value="noche" required> Noche
+            <label for="valorSeleccionado"></label>
+            <input type="text" id="valorSeleccionado" readonly> 
+          </p>
+          <br>
+          <br>
+          <br>
         </div>
-        <button class="btn waves-effect waves-light" type="button" id="btn">Enviar</button>
-        <span id="contenedorBtnExtra">
-
-        </span>
+        <button class="btn waves-effect waves-light" type="button" id="btn">Enviar</button><br>
+          
       </form>
     </div>
-      <div id="contenedorTabla">
+    <div id="contenedorTabla">
 
-      </div> 
-      
-      <div id="mensaje-error-container"></div>
+    </div>  
     </section>
   </section>
 

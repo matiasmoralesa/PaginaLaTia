@@ -54,54 +54,82 @@ const fuente = () => {
     tituloH3.classList.toggle('tamanio-letra-muy-grande');
   }
 
-  var modificar = (listadoReservaNuevo)=>{
-    let eNombre = document.getElementById("nombre");
-    let eCorreo = document.getElementById("correo");
-    let eTelefono = document.getElementById("telefono");
-    let eComida = document.getElementById("Comida");
-    let ePersonas = document.getElementById("personas");
-    let eFecha = document.getElementById("fecha");
-    let eHora = document.getElementById("hora");
-    let eRecomendacion = document.getElementById("recomendacion");
-    let eHorario = valorSeleccionado
-    let eBtnEditarUp = document.getElementById("btnEditar");
+var modificar = (listadoReservaNuevo)=>{
+  // Obtener referencias a los elementos del formulario de edición
+  let eNombre = document.getElementById("nombre");
+  let eCorreo = document.getElementById("correo");
+  let eTelefono = document.getElementById("telefono");
+  let eComida = document.getElementById("comida");
+  let ePersonas = document.getElementById("personas");
+  let eFecha = document.getElementById("fecha");
+  let eHora = document.getElementById("hora");
+  let eRecomendacion = document.getElementById("recomendacion");
+  let eCondiciones = document.getElementById('condiciones');
+  let eBtnEditarUp = document.getElementById("btnEditar");
 
-    let nombre = eNombre.value;
-    let correo = eCorreo.value;
-    let telefono = eTelefono.value;
-    let comida = eComida.value;
-    let personas = parseInt(ePersonas.value);
-    let fecha = eFecha.value;
-    let hora = eHora.value;
-    let recomendacion = eRecomendacion.value;
-    let horario = eHorario.value;
-    let indice = eBtnEditarUp.value;
-    listadoReservaNuevo[indice].nombre = nombre;
-    listadoReservaNuevo[indice].correo = correo;
-    listadoReservaNuevo[indice].telefono = telefono;
-    listadoReservaNuevo[indice].comida = comida;
-    listadoReservaNuevo[indice].personas = personas;
-    listadoReservaNuevo[indice].fecha = fecha;
-    listadoReservaNuevo[indice].hora = hora;
-    listadoReservaNuevo[indice].recomendacion = recomendacion;
-    listadoReservaNuevo[indice].horario = horario;
-    localStorage.setItem('registros',JSON.stringify(listadoReservaNuevo));
-    cargarTabla(listadoReservaNuevo)
+
+  // Obtener los valores actualizados de los campos del formulario
+  let nombre = eNombre.value;
+  let correo = eCorreo.value;
+  let telefono = eTelefono.value;
+  let comida = eComida.value;
+  let personas = parseInt(ePersonas.value);
+  let fecha = eFecha.value;
+  let hora = eHora.value;
+  let recomendacion = eRecomendacion.value;
+  let condiciones = eCondiciones.checked ? "si" : "no";
+  let indice = eBtnEditarUp.value;
+
+  // Actualizar los valores de la reserva en la lista
+  listadoReservaNuevo[indice].nombre = nombre;
+  listadoReservaNuevo[indice].correo = correo;
+  listadoReservaNuevo[indice].telefono = telefono;
+  listadoReservaNuevo[indice].comida = comida;
+  listadoReservaNuevo[indice].personas = personas;
+  listadoReservaNuevo[indice].fecha = fecha;
+  listadoReservaNuevo[indice].hora = hora;
+  listadoReservaNuevo[indice].recomendacion = recomendacion;
+  listadoReservaNuevo[indice].condiciones = condiciones;
+
+  // Actualizar el almacenamiento local con la lista modificada
+  localStorage.setItem('reserva',JSON.stringify(listadoReservaNuevo));
+
+  // Volver a cargar la tabla con los datos actualizados
+  cargarTabla(listadoReservaNuevo)
+  
 }
 
 var eliminar = (listadoReservaNuevo)=>{
+
+  // Obtener el botón de eliminar actual
   let eBtnEliminarUp = document.getElementById("btnEliminar");
-  let indice = eBtnEliminarUp.value;
   
+  // Obtener el índice del elemento a eliminar
+  let indice = eBtnEliminarUp.value;
+
+  
+  
+  // Mostrar los datos de reserva antes de eliminar
   console.log(listadoReservaNuevo)
+
+  // Filtrar los elementos de la lista para excluir el elemento a eliminar
   lista = listadoReservaNuevo.filter((p)=>p.id!=indice)
+ 
+  // Actualizar los índices de los elementos restantes
   lista = lista.map((p,index)=>{return{...p,"id":index}})
+  
+  // Mostrar los datos de reserva después de eliminar
   console.log(lista)
-  localStorage.setItem("registros",JSON.stringify(lista));
+
+  // Actualizar los datos en el almacenamiento local
+  localStorage.setItem("reserva",JSON.stringify(lista));
+
+  // Volver a cargar la tabla con los datos actualizados
   cargarTabla(lista) 
 }
 
-var cargarTabla = (listadoReservaNuevo,valorSeleccionado)=>{
+var cargarTabla = (listadoReservaNuevo,)=>{
+   // Obtener referencias a los elementos del DOM
   let eContenedorTabla = document.getElementById("contenedorTabla");
   let eNombre = document.getElementById("nombre");
   let eCorreo = document.getElementById("correo");
@@ -111,10 +139,11 @@ var cargarTabla = (listadoReservaNuevo,valorSeleccionado)=>{
   let eFecha = document.getElementById("fecha");
   let eHora = document.getElementById("hora");
   let eRecomendacion = document.getElementById("recomendacion");
-  let eHorario = valorSeleccionado
+  let eCondiciones = document.getElementById('condiciones');
 
+  // Generar el código HTML de la tabla de reservas
   render = "<table>"
-  render += "<tr><th>Nombre</th><th>Correo</th><th>telefono</th><th>comidafavorita</th><th>cantidadPersonas</th><th>fechareserva</th><th>horareserva</th><th>Recomendacion</th><th>Horario</th></tr>"
+  render += "<tr><th>Nombre</th><th>Correo</th><th>telefono</th><th>comidafavorita</th><th>cantidadPersonas</th><th>fechareserva</th><th>horareserva</th><th>Recomendacion</th><th>condiciones</th></tr>"
   for (let i = 0; i < listadoReservaNuevo.length; i++){
       const element = listadoReservaNuevo[i];
       render += "<tr>";
@@ -126,7 +155,7 @@ var cargarTabla = (listadoReservaNuevo,valorSeleccionado)=>{
       render += "<td>"+element.fecha+"</td>";
       render += "<td>"+element.hora+"</td>";
       render += "<td>"+element.recomendacion+"</td>";
-      render += "<td>"+element.horario+"</td>";
+      render += "<td>"+element.condiciones+"</td>";
       render += "<td>";
       render += "<button type='button' class='btn waves-effect waves-light' id='btnEditar"+i+"'>Editar</button>";
       render += "<button type='button' class='btn waves-effect waves-light' id='btnEliminar"+i+"'>Eliminar</button>";
@@ -134,12 +163,32 @@ var cargarTabla = (listadoReservaNuevo,valorSeleccionado)=>{
       render += "</tr>";
   }
   render += "</table>";
+
+  // Actualizar el contenido del contenedor de la tabla
   eContenedorTabla.innerHTML = render;
+
+  // Agregar eventos a los botones de editar y eliminar en cada fila de la tabla
     for (let i = 0; i < listadoReservaNuevo.length; i++){
       var eBtn = document.getElementById("btnEditar"+i);
       var eBtn2 = document.getElementById("btnEliminar"+i);
       let element = listadoReservaNuevo[i]
+      
+      // Evento de editar
       eBtn.addEventListener("click",()=>{
+
+        // Activar los campos
+        document.getElementById("nombre").disabled = false;
+        document.getElementById("correo").disabled = false;
+        document.getElementById("telefono").disabled = false;
+        document.getElementById("comida").disabled = false;
+        document.getElementById("personas").disabled = false;
+        document.getElementById("fecha").disabled = false;
+        document.getElementById("hora").disabled = false;
+        document.getElementById("recomendacion").disabled = false;
+        document.getElementById("condiciones").disabled = false;
+
+
+        // Asignar los valores de la reserva seleccionada a los campos del formulario
         eNombre.value = element.nombre;
         eCorreo.value = element.correo;
         eTelefono.value = element.telefono;
@@ -147,15 +196,45 @@ var cargarTabla = (listadoReservaNuevo,valorSeleccionado)=>{
         ePersonas.value = element.personas;
         eFecha.value = element.fecha;
         eHora.value = element.hora;
-        eRecomendacion = element.recomendacion;
-        eHorario.value = element.horario;
+        eRecomendacion.value = element.recomendacion;
+        // Verificar el valor de condiciones del elemento
+        if (element.condiciones === "si") {
+          // Si el valor es "si", se marca el checkbox
+          eCondiciones.setAttribute("checked", "checked");
+        } else {
+          // Si el valor es "no", se desmarca el checkbox
+          eCondiciones.removeAttribute("checked");
+        };
+
+        // Generar el botón de editar dinámicamente
         let sEditar = "<button type='button'class='btn waves-effect waves-light' id='btnEditar' value='"+i+"'>Editar</button>";
+        
+        // Obtener el contenedor de botones adicionales
         let contenedorBoton = document.getElementById("contenedorBtnExtra");
         contenedorBoton.innerHTML = sEditar;
+        
+        // Obtener la referencia al botón de editar recién creado
         let eBtnEditarUp = document.getElementById("btnEditar");
+
+        // Agregar un evento al botón de editar
         eBtnEditarUp.addEventListener("click",()=>modificar(listadoReservaNuevo));
       })
+
+      // Evento de eliminar
       eBtn2.addEventListener("click",()=>{
+              
+        // Desactivar los campos
+        document.getElementById("nombre").disabled = true;
+        document.getElementById("correo").disabled = true;
+        document.getElementById("telefono").disabled = true;
+        document.getElementById("comida").disabled = true;
+        document.getElementById("personas").disabled = true;
+        document.getElementById("fecha").disabled = true;
+        document.getElementById("hora").disabled = true;
+        document.getElementById("recomendacion").disabled = true;
+        document.getElementById("condiciones").disabled = true;
+
+        // Asignar los valores de la reserva seleccionada a los campos del formulario
         eNombre.value = element.nombre;
         eCorreo.value = element.correo;
         eTelefono.value = element.telefono;
@@ -164,76 +243,125 @@ var cargarTabla = (listadoReservaNuevo,valorSeleccionado)=>{
         eFecha.value = element.fecha;
         eHora.value = element.hora;
         eRecomendacion = element.recomendacion;
-        eHorario.value = element.horario;
+        eCondiciones.value = element.condiciones;
+
+        // Generar el botón de eliminar dinámicamente
         let sEliminar = "<button type='button'class='btn waves-effect waves-light' id='btnEliminar' value='"+i+"'>Eliminar</button>";
+
+        // Obtener el contenedor de botones adicionales
         let contenedorBoton = document.getElementById("contenedorBtnExtra");
         contenedorBoton.innerHTML = sEliminar;
+
+        // Obtener la referencia al botón de eliminar recién creado
         let eBtnEliminarUp = document.getElementById("btnEliminar");
+
+        // Agregar un evento al botón de eliminar
         eBtnEliminarUp.addEventListener("click",()=>eliminar(listadoReservaNuevo))           
       })
       
   }
 }
 
-const btn = document.querySelector('btn');
-        document.getElementById('btn').addEventListener('click', (event) => {
-            let checkboxes = document.querySelectorAll('input[name="horario"]:checked');
-            let output = [];
-            checkboxes.forEach((checkbox) => {
-                output.push(checkbox.value);
-            });
-            alert(output);
-        });    
 
-  var registra = (valorSeleccionado)=> {
-    
-    let eNombre = document.getElementById("nombre");
-    let eCorreo = document.getElementById("correo");
-    let eTelefono = document.getElementById("telefono");
-    let eComida = document.getElementById("comida");
-    let ePersonas = document.getElementById("personas");
-    let eFecha = document.getElementById("fecha");
-    let eHora = document.getElementById("hora");
-    let eRecomendacion = document.getElementById("recomendacion");
-    let eHorario = valorSeleccionado
+var registra = ()=> {
+  // Obtener referencias a los elementos del formulario
+  let eNombre = document.getElementById("nombre");
+  let eCorreo = document.getElementById("correo");
+  let eTelefono = document.getElementById("telefono");
+  let eComida = document.getElementById("comida");
+  let ePersonas = document.getElementById("personas");
+  let eFecha = document.getElementById("fecha");
+  let eHora = document.getElementById("hora");
+  let eRecomendacion = document.getElementById("recomendacion");
+  let eCondiciones = document.getElementById('condiciones')
+  
 
-    let nombre = eNombre.value;
-    let correo = eCorreo.value;
-    let telefono = eTelefono.value;
-    let comida = eComida.value;
-    let personas = parseInt(ePersonas.value);
-    let fecha = eFecha.value;
-    let hora = eHora.value;
-    let recomendacion = eRecomendacion.value;
-    let horario = eHorario.valorSeleccionado;   
+  // Obtener los valores de los campos del formulario
+  let nombre = eNombre.value.trim();
+  let correo = eCorreo.value.trim();
+  let telefono = eTelefono.value.trim();
+  let comida = eComida.value.trim();
+  let personas = parseInt(ePersonas.value.trim());
+  let fecha = eFecha.value.trim();
+  let hora = eHora.value.trim();
+  let recomendacion = eRecomendacion.value.trim();
+  let condiciones = eCondiciones.checked ? "si" : "no";   
 
-    
-    const reserva = [];
-    reserva[0] = nombre;
-    reserva[1] = correo;
-    reserva[2] = telefono;
-    reserva[3] = comida;
-    reserva[4] = personas;
-    reserva[5] = fecha;
-    reserva[6] = hora;
-    reserva[7] = recomendacion;
-    reserva[8] = horario;
-    console.log(reserva);
-    let listadoReserva =  localStorage.getItem("reserva");
-    let listadoReservaAntiguo = JSON.parse(listadoReserva);
-    if (listadoReservaAntiguo==null){
-        let reserva = {"id":0, "nombre":nombre,"correo":correo,"telefono":telefono,"comida":comida,"personas":personas,"fecha":fecha,"hora":hora,"recomendacion":recomendacion,"horario":horario};
-        listadoReservaNuevo = [reserva]
-    }else{
-        let reserva = {"id":listadoReservaAntiguo.lenght, "nombre":nombre,"correo":correo,"telefono":telefono,"comida":comida,"personas":personas,"fecha":fecha,"hora":hora,"recomendacion":recomendacion,"horario":horario};
-        listadoReservaNuevo = [...listadoReservaAntiguo,reserva]
-    }
+  // Validar que todos los campos estén completos
+  if (
+    nombre === "" ||
+    correo === "" ||
+    telefono === "" ||
+    comida === "" ||
+    isNaN(personas) ||
+    fecha === "" ||
+    hora === "" ||
+    recomendacion === "" ||
+    !eCondiciones.checked
+  ) {
+    // Mostrar mensaje de error
+    alert("Debe completar todos los campos del formulario");
+    return; // Detener la ejecución de la función si hay campos incompletos
+  }
 
-    console.log(listadoReservaAntiguo);
-    console.log(listadoReservaNuevo);
-    localStorage.setItem('reserva',JSON.stringify(listadoReservaNuevo));
-    
-    cargarTabla(listadoReservaNuevo);
+  // Crear un array para almacenar la reserva
+  const reserva = [];
+  reserva[0] = nombre;
+  reserva[1] = correo;
+  reserva[2] = telefono;
+  reserva[3] = comida;
+  reserva[4] = personas;
+  reserva[5] = fecha;
+  reserva[6] = hora;
+  reserva[7] = recomendacion;
+  reserva[8] = condiciones;
+  console.log(reserva);
+
+  // Obtener el listado de reservas del almacenamiento local
+  let listadoReserva =  localStorage.getItem("reserva");
+  let listadoReservaAntiguo = JSON.parse(listadoReserva);
+
+  // Verificar si ya hay reservas almacenadas
+  if (listadoReservaAntiguo==null){
+    // Si no hay reservas, crear una nueva reserva con ID 0
+    let reserva = {
+      "id": 0,
+      "nombre":nombre,
+      "correo":correo,
+      "telefono":telefono,
+      "comida":comida,
+      "personas":personas,
+      "fecha":fecha,
+      "hora":hora,
+      "recomendacion":recomendacion,
+      "condiciones":condiciones
+    };
+    listadoReservaNuevo = [reserva]
+  }else{
+    // Si ya hay reservas, crear una nueva reserva con un ID incremental
+    let reserva = {
+      "id":listadoReservaAntiguo.lenght,
+      "nombre":nombre,
+      "correo":correo,
+      "telefono":telefono,
+      "comida":comida,
+      "personas":personas,
+      "fecha":fecha,
+      "hora":hora,
+      "recomendacion":recomendacion,
+      "condiciones":condiciones
+    };
+    listadoReservaNuevo = [...listadoReservaAntiguo,reserva]
+  }
+
+  console.log(listadoReservaAntiguo);
+  console.log(listadoReservaNuevo);
+
+  // Guardar los datos de reserva en el almacenamiento local
+  localStorage.setItem('reserva',JSON.stringify(listadoReservaNuevo));
+  
+  // Cargar la tabla con los nuevos datos de reserva
+  cargarTabla(listadoReservaNuevo);
 }  
 
 var cargarDatos = ()=>{
@@ -242,10 +370,156 @@ var cargarDatos = ()=>{
   cargarTabla(listadoReservaNuevo)
 }
 
+// Obtener el formulario y el botón de envío
+const formulario = document.getElementById("myForm");
+const botonEnviar = document.getElementById("btn");
+
+// Agregar evento click al botón de envío
+botonEnviar.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  // Variable para verificar si todos los campos son válidos
+  let isValid = true;
+
+  // Limpiar mensajes de error anteriores
+  limpiarMensajesError();
+
+  // Validar campo nombre
+  const campoNombre = document.getElementById("nombre");
+  if (campoNombre.value.trim() === "") {
+    isValid = false;
+    marcarCampoInvalido(campoNombre);
+    mostrarMensajeError("Debe ingresar un nombre", campoNombre);
+  }
+
+  // Validar campo correo
+  const campoCorreo = document.getElementById("correo");
+  if (campoCorreo.value.trim() === "") {
+    isValid = false;
+    marcarCampoInvalido(campoCorreo);
+    mostrarMensajeError("Debe ingresar un correo electrónico", campoCorreo);
+  }
+
+  // Validar campo teléfono
+  const campoTelefono = document.getElementById("telefono");
+  if (campoTelefono.value.trim() === "") {
+    isValid = false;
+    marcarCampoInvalido(campoTelefono);
+    mostrarMensajeError("Debe ingresar un número de teléfono", campoTelefono);
+  }
+
+  // Validar campo comida
+  const campoComida = document.getElementById("comida");
+  if (campoComida.value.trim() === "") {
+    isValid = false;
+    marcarCampoInvalido(campoComida);
+    mostrarMensajeError("Debe ingresar una comida", campoComida);
+  }
+
+  // Validar campo personas
+  const campoPersonas = document.getElementById("personas");
+  const personas = parseInt(campoPersonas.value);
+  if (isNaN(personas) || personas < 0) {
+  isValid = false;
+  marcarCampoInvalido(campoPersonas);
+  mostrarMensajeError("Debe ingresar un número válido de personas", campoPersonas);
+  } 
+
+  // Validar campo hora
+const campoHora = document.getElementById("hora");
+if (campoHora.value.trim() === "") {
+  isValid = false;
+  marcarCampoInvalido(campoHora);
+  mostrarMensajeError("Debe ingresar una hora", campoHora);
+} else {
+  limpiarCampoInvalido(campoHora);
+
+  // Validar campo fecha
+  const campoFecha = document.getElementById("fecha");
+  if (campoFecha.value.trim() === "") {
+    isValid = false;
+    marcarCampoInvalido(campoFecha);
+    mostrarMensajeError("Debe ingresar una fecha", campoFecha);
+  } else {
+    const fechaActual = new Date();
+    const fechaIngresada = new Date(campoFecha.value);
+
+    fechaActual.setHours(0, 0, 0, 0);
+    fechaIngresada.setHours(0, 0, 0, 0);
+
+    if (fechaIngresada < fechaActual) {
+      isValid = false;
+      marcarCampoInvalido(campoFecha);
+      mostrarMensajeError("La fecha no puede ser anterior a la actual", campoFecha);
+    } else {
+      limpiarCampoInvalido(campoFecha);
+    }
+  }
+}
+
+  // Validar campo recomendación
+  const campoRecomendacion = document.getElementById("recomendacion");
+  if (campoRecomendacion.value.trim() === "") {
+    isValid = false;
+    marcarCampoInvalido(campoRecomendacion);
+    mostrarMensajeError("Debe ingresar una recomendación", campoRecomendacion);
+  }
+
+  // Validar campo condiciones
+  const campoCondiciones = document.getElementById("condiciones");
+  if (!campoCondiciones.checked) {
+    isValid = false;
+    marcarCampoInvalido(campoCondiciones);
+    mostrarMensajeError("Debe aceptar los términos y condiciones", campoCondiciones);
+  }
+
+  // Si todos los campos son válidos, continuar con el envío del formulario
+  if (isValid) {
+    formulario.submit();
+  }
+});
+
+// Función para marcar un campo como inválido
+function marcarCampoInvalido(campo) {
+  campo.classList.add("campo-invalido");
+}
+
+function mostrarMensajeError(mensaje, campo) {
+  const errorMensaje = document.createElement("p");
+  errorMensaje.classList.add("mensaje-error");
+  errorMensaje.innerText = mensaje;
+
+  const campoContainer = campo.parentNode;
+  campoContainer.appendChild(errorMensaje);
+}
+
+// Función para limpiar los mensajes de error
+function limpiarMensajesError() {
+  const mensajesError = document.querySelectorAll(".mensaje-error");
+  mensajesError.forEach((mensaje) => {
+    mensaje.remove();
+  });
+
+  const camposInvalidos = document.querySelectorAll(".campo-invalido");
+  camposInvalidos.forEach((campo) => {
+    campo.classList.remove("campo-invalido");
+  });
+}
+
+function limpiarCampoInvalido(campo) {
+  campo.classList.remove("campo-invalido");
+  const campoContainer = campo.parentNode;
+  const mensajeError = campoContainer.querySelector(".mensaje-error");
+  if (mensajeError) {
+    campoContainer.removeChild(mensajeError);
+  }
+}
 // Agrega un evento de escucha de clic al botón con el ID 'btnContraste'
 document.getElementById('btnContraste').addEventListener('click',contraste);
 // Agrega un evento de escucha de clic al botón con el ID 'btnFuente' 
 document.getElementById('btnFuente').addEventListener('click',fuente);
 // Agrega un evento de escucha de clic al boton con el ID 'btn'
 document.getElementById("btn").addEventListener("click",registra);
+
+//document.getElementById('btn').addEventListener('click',validarFormulario)
 addEventListener('load',cargarDatos)
